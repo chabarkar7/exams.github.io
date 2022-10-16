@@ -11,6 +11,28 @@
             </pre> 
         </div>
     </div>
+        <pre>
+        import threading
+import math
+def krishnumber(n1):
+    print(f"Current thread is {threading.current_thread().name}")
+    temp=n1
+    sum=0
+    while (n1!=0):
+        rem=n1%10
+        sum=sum+(math.factorial(rem))
+        n1=n1//10
+    if temp==sum:
+        print("krishnumber")
+    else:
+        print("Not krishnumber")
+t1=threading.Thread(target=krishnumber,args=(145,),name="t1")
+t2=threading.Thread(target=krishnumber,args=(146,),name="t2")
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+        </pre>
 
 
     <div id="java">
