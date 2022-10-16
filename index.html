@@ -778,7 +778,7 @@
 
 
             class buffer:
-                def _init_(self, size):
+                def __init__(self, size):
                     self.size = size
                     self.b = [0]*size
                     self.into = 0
@@ -798,7 +798,7 @@
 
 
             class Producer(Thread):
-                def _init_(self, b):
+                def __init__(self, b):
                     super(Producer, self)._init_()
                     self.b = b
 
@@ -812,7 +812,7 @@
                         time.sleep(5)
 
             class Consumer(Thread):
-                def _init_(self,b):
+                def __init__(self,b):
                     super(Consumer,self)._init_()
                     self.b = b
                 
@@ -910,7 +910,7 @@
             from threading import Thread
             import time
             class Buffer():
-                def _init_(self,size):
+                def __init__(self,size):
                     self.size=size
                     self.buf=[0]*size
                     self.into=0
@@ -927,7 +927,7 @@
                     self.into=(self.into+1)%self.size
 
             class Producer(Thread):
-                def _init_(self,b):
+                def __init__(self,b):
                     super(Producer,self)._init_()
                     self.buf=b
                 def run(self):
@@ -943,7 +943,7 @@
                         time.sleep(5)
 
             class Consumer(Thread):
-                def _init_(self,b):
+                def __init__(self,b):
                     super(Consumer,self)._init_()
                     self.buf=b
                 def run(self):
