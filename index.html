@@ -965,77 +965,70 @@
             c.join()
         </pre>
         <pre id="bankers">
-            n=int(input("Enter the no of processes: "))
-            m=int(input("Enter the no of resources: "))
-            Allocation=[]
-            Max=[]
-            Need=[]
-            Available=[]
-            print("Enter the Allocation Matrix: ")
-            for i in range(n):
-                rowinput=[]
-                for j in range(m):
-                    x=int(input())
-                    rowinput.append(x)
-                Allocation.append(rowinput)
+            n=int(input("Enter number of processes:"))
+m=int(input("Enter number of resources:"))
+Need=[]
+Allocation=[]
+Max=[]
+Available=[]
+print("Enter Max matrix:")
+for i in range(n):
+    rowinput=[]
+    for j in range(m):
+        x=int(input())
+        rowinput.append(x)
+    Max.append(rowinput)
+print("Enter Allocation matrix:")
+for i in range(n):
+    rowinput=[]
+    for j in range(m):
+        x=int(input())
+        rowinput.append(x)
+    Allocation.append(rowinput)
+for i in range(n):
+    rowinput=[]
+    for j in range(m):
+        x=Max[i][j]-Allocation[i][j]
+        rowinput.append(x)
+    Need.append(rowinput)
+Resources=[]
+print("Enter total resources: ")
+for i in range(m):
+    x=int(input())
+    Resources.append(x)
 
-            print("Enter the Max Matrix: ")
-            for i in range(n):
-                rowinput=[]
-                for j in range(m):
-                    x=int(input())
-                    rowinput.append(x)
-                Max.append(rowinput)
+for j in range(m):
+    x=0
+    for i in range(n):
+        x+=Allocation[i][j]
+    x=Resources[j]-x
+    Available.append(x)
 
-            #Calculate Need Matrix
-            for i in range(n):
-                rowinput=[]
-                for j in range(m):
-                    x=Max[i][j]-Allocation[i][j]
-                    rowinput.append(x)
-                Need.append(rowinput)
-
-            Resources=[]
-            print("Enter the total resources: ")
-            for i in range(m):
-                x=int(input())
-                Resources.append(x)
-
-
-            for j in range(m):
-                x=0
-                for i in range(n):
-                    x+=Allocation[i][j]
-                x=Resources[j]-x
-                Available.append(x)
-
-
-            Work=Available.copy()
-            finish=[0]*n
-            Sequence=[]
-            alldone=False
-            attempt=0
-            while alldone==False:
-                attempt+=1
-                for i in range(n):
-                    if(finish[i]==0) and (Need[i]<=Work):
-                        for k in range(m):
-                            Work[k]+=Allocation[i][k]
-                            finish[i]=1
-                        Sequence.append(i)
-                    for i in range(n):
-                        if(finish[i]==0):
-                            break
-                        else:
-                            alldone=True
-                    if attempt>2:
-                        break
-
-            if alldone==True:
-                print("System is in Safe State")
-                print("The sequence is",Sequence)
-            else:
-                print("System is Unsafe")
+Work=Available.copy()
+Sequence=[]
+Finish=[0]*n
+alldone=False
+attempt=0
+while alldone==False:
+    attempt+=1
+    for i in range(n):
+        if(Finish[i]==0 and Need[i]<=Work):
+            for k in range(m):
+                Work[k]+=Allocation[i][k]
+                Finish[i]=1
+            Sequence.append(i)
+    for i in range(n):
+        if (Finish[i]==0):
+            break
+        else:
+            alldone=True
+        if attempt>2:
+            break
+if alldone==True:
+    print("System is in safe state")
+    print(Sequence)
+else:
+    print("Unsafe state")
         </pre>
         <pre id="rmifact">
 
