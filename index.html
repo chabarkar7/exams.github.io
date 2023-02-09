@@ -66,6 +66,34 @@ quickSort(data, 0, size -1)
 print('Sorted Array in Ascending Order:')
 print(data)
     </pre>
+    <pre class="tcqiucksort">
+TIME COMPLEXITY: O(n*logn) . 
+T(n)=2T(n/2)+n - - - - - - - (i)
+Replace n with n/2 in (i)
+T(n/2)=2T(n/4)+n/2 - - - - - - (ii)
+Replace n with n/2 in (i)
+T(n/4)=2T(n/8)+n/8 - - - - - - (iii)
+Substituting (ii) in (i)
+T(n)=2[2T(n/4)+n/2]+n 
+ =4T(n/4)+n+n
+ =4T(n/4)+2n - - - - -(iv)
+Substituting (iii) in (iv)
+T(n)=4[2T(n/8)+n/4]+2n 
+ =8T(n/8)+n+2n
+ =8T(n/8)+3n - - - - -(v)
+ =2^3T(n/2^3)+3n
+Replace 3 by k
+T(n)=2^kT(n/2^k)+kn
+Assume
+T(1)=1 
+n/2^k=1
+I.e n=2^k
+k=logn
+T(n)=nT(1)+logn . n
+ =n+n log n
+O(n)=n log n
+
+    </pre>
 </body>
 
 </html>
