@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre class="basics">
+        
+    <pre class="grade">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netprac1
+{
+    class Prac01
+    {
+        public void Grade()  
+        {
+            String grade;
+            Console.WriteLine("Roll No: SYCS2223007");
+            Console.WriteLine("Enter your grade:");
+            grade = Console.ReadLine();
+            switch (grade)
+            {
+                case "A":
+                    Console.WriteLine("You have distinction");
+                    break;
+                case "B":
+                    Console.WriteLine("You have very good grade");
+                    break;
+                case "C":
+                    Console.WriteLine("You have good greade");
+                    break;
+                case "D":
+                    Console.WriteLine("You have failed");
+                    break;
+
+
+            }
+        }
+    }
+}
+
+    </pre>
+
+    <pre class="prime">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netprac1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Prac01 obj = new Prac01 ();
+            obj.Grade();
+            int n, a = 0;
+
+            Console.WriteLine("Enter the number:");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (int i=1; i<=n;i++)
+            {
+                if (n%i==0)
+                {
+                    a++;
+                }
+            }
+            if (a==2)
+            {
+                Console.WriteLine("{0} is a prime number", n);
+
+            }
+            else
+            {
+                Console.WriteLine("{0} is not a prime number", n);
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+    </pre>
+    </pre>
+
+    <pre class="area">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netprac2
+{
+    class Prac2 : Practical2
+    {
+        public Prac2()
+        {
+            Console.WriteLine("Roll No: SYCS2223007");
+            Console.WriteLine("Finding the area of square and circle");
+
+        }
+        static void Main(string[] args)
+        {
+            Prac2 obj = new Prac2();
+            obj.Area(25.5);
+            obj.Area(29);
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netprac2
+{
+    class Practical2
+    {
+        public void Area(double num)
+        {
+            double result = 3.14 * num * num;
+            Console.WriteLine("Area of circle = {0}", result);
+            Console.ReadLine();
+        }
+        public void Area(int num)
+
+        {
+            int result = num * num;
+            Console.WriteLine("Area of square = {0}", result);
+            Console.ReadLine();
+        }
+    }
+}
+    </pre>
+
+    <pre class="rich controls">
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Netprac3.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+
+                <asp:View ID="View1" runat="server">
+
+                    <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" Height="104px" Width="145px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged">
+                        <asp:ListItem>sunflower</asp:ListItem>
+                        <asp:ListItem>rose</asp:ListItem>
+                        <asp:ListItem>daisy</asp:ListItem>
+                        <asp:ListItem>hibiscus</asp:ListItem>
+                    </asp:ListBox>
+                    <br />
+                    <asp:Label ID="Label1" runat="server" ></asp:Label>
+
+                    <asp:Button CommandName="NextView" ID="Button1" runat="server" Text="Go to next" 
+                        OnClick="btnnext1_Click"/>
+
+                    <asp:Button CommandName="LastView" ID="Button5" runat="server" Text="Go to last" />
+
+                </asp:View>
+
+                <asp:View ID="View2" runat="server">
+                    <br />
+                    <asp:Calendar ID="Calendar2" runat="server" AutoPostBack="True" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
+                    <br />
+                    <asp:Label ID="Label2" runat="server"></asp:Label>
+                    <br />
+                    <asp:Button CommandName="NextView" ID="Button2" runat="server" Text="Go to next" OnClick="btnnext2_Click" />
+                    <asp:Button CommandName="PrevView" ID="Button3" runat="server" Text="Go to previous" />
+                    <br />
+                </asp:View>
+
+                <asp:View ID="View3" runat="server">
+
+                    <asp:AdRotator ID="AdRotator1" runat="server" AdvertisementFile="~/ad.xml" height="500px" Width="900px" />
+                    <br />
+                    <br />
+                    <asp:Button CommandName="NextView"  ID="Button7" runat="server" Text="Go to next" OnClick="btnnext7_Click" />
+                    <asp:Button CommandName="PrevView" ID="Button6" runat="server" Text="Go to previous" />
+
+                </asp:View>
+
+                <asp:View ID="View4" runat="server">
+
+                    <asp:Table ID="Table1" runat="server" Height="175px" Width="500px">
+                        <asp:TableRow runat="server" BorderWidth="4px">
+                            <asp:TableCell runat="server" BorderWidth="2px">Name</asp:TableCell>
+                            <asp:TableCell runat="server" BorderWidth="2px">Roll No</asp:TableCell>
+                            <asp:TableCell runat="server" BorderWidth="2px">Address</asp:TableCell>
+                            <asp:TableCell runat="server" BorderWidth="2px">Contact No</asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server" BorderWidth="2px">
+                            <asp:TableCell ID="n1" runat="server">Ritesh</asp:TableCell>
+                            <asp:TableCell ID="R1" runat="server">001</asp:TableCell>
+                            <asp:TableCell ID="A1" runat="server">Sion</asp:TableCell>
+                            <asp:TableCell ID="C1" runat="server">9876543210</asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server" BorderWidth="2px">
+                            <asp:TableCell ID="N2" runat="server">Raju</asp:TableCell>
+                            <asp:TableCell ID="R2" runat="server">002</asp:TableCell>
+                            <asp:TableCell ID="A2" runat="server">Dadar</asp:TableCell>
+                            <asp:TableCell ID="C2" runat="server">1234567890</asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server" BorderWidth="2px">
+                            <asp:TableCell ID="N3" runat="server">Farhan</asp:TableCell>
+                            <asp:TableCell ID="R3" runat="server">003</asp:TableCell>
+                            <asp:TableCell ID="A3" runat="server">Mahim</asp:TableCell>
+                            <asp:TableCell ID="C3" runat="server">9341657894</asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server" BorderWidth="2px">
+                            <asp:TableCell ID="N4" runat="server">Rancho</asp:TableCell>
+                            <asp:TableCell ID="R4" runat="server">004</asp:TableCell>
+                            <asp:TableCell ID="A4" runat="server">Bandra</asp:TableCell>
+                            <asp:TableCell ID="C4" runat="server">9862746372</asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                    <br />
+                    <asp:Button CommandName="PrevView" ID="Button4" runat="server" Text="Go to previous" />
+                </asp:View>
+               </asp:MultiView>
+            
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Netprac3
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnnext2_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnnext7_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnnext1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Label1.Text = "You have selected: " +
+            ListBox1.SelectedValue.ToString();
+        }
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            Label2.Text = "You have selected: " + Calendar2.SelectedDate.ToLongDateString();
+        }
+
+     }
+ }
+
+
+
+ <?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>car1.jfif</ImageUrl>
+		<NavigateUrl>https://www.cardekho.com/lamborghini/urus</NavigateUrl>
+		<AlternateText> lamborghini</AlternateText>
+		<Impressions> 1 </Impressions>
+		<Keyword> car </Keyword>
+	</Ad>
+	<Ad>
+		<ImageUrl>car2.jpg</ImageUrl>
+		<NavigateUrl>https://www.autocarindia.com/auto-images/2017-maruti-dzire-image-gallery-404766</NavigateUrl>
+		<AlternateText> swift dzire</AlternateText>
+		<Impressions> 1 </Impressions>
+		<Keyword> car </Keyword>
+	</Ad>
+	<Ad>
+		<ImageUrl>car3.jpg</ImageUrl>
+		<NavigateUrl>https://carconfigurator.ferrari.com/en_EN</NavigateUrl>
+		<AlternateText> ferrari</AlternateText>
+		<Impressions> 1 </Impressions>
+		<Keyword>car</Keyword>
+	</Ad>
+</Advertisements>
+
+
+    </pre>
+
+    <pre class="navigation controls">
+
+        <pre class="menu">
+        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Netprac4.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                <asp:View ID="View1" runat="server">
+                    <asp:Menu ID="Menu1" runat="server">
+                        <Items>
+                            <asp:MenuItem Text="Fruits" Value="Fruits">
+                                <asp:MenuItem Text="Apple" Value="Apple"></asp:MenuItem>
+                                <asp:MenuItem Text="Mango" Value="Mango"></asp:MenuItem>
+                                <asp:MenuItem Text="Grapes" Value="Grapes"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Flowers" Value="Flowers">
+                                <asp:MenuItem Text="Rose" Value="Rose"></asp:MenuItem>
+                                <asp:MenuItem Text="Lily" Value="Lily"></asp:MenuItem>
+                                <asp:MenuItem Text="Lotus" Value="Lotus"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Birds" Value="Birds">
+                                <asp:MenuItem Text="Sparrow" Value="Sparrow"></asp:MenuItem>
+                                <asp:MenuItem Text="Crow" Value="Crow"></asp:MenuItem>
+                                <asp:MenuItem Text="Piegon" Value="Piegon"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Animals" Value="Animals">
+                                <asp:MenuItem Text="Tiger" Value="Tiger"></asp:MenuItem>
+                                <asp:MenuItem Text="Lion" Value="Lion"></asp:MenuItem>
+                                <asp:MenuItem Text="Monkey" Value="Monkey"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </asp:View>
+            </asp:MultiView>
+        </div>
+    </form>
+</body>
+</html>
+    </pre>
+
+
+<pre class="treeview">
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="Netprac4.WebForm2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                <asp:View ID="View1" runat="server">
+                    <asp:TreeView ID="TreeView1" runat="server">
+                        <Nodes>
+                            <asp:TreeNode Text="Fruits" Value="Fruits">
+                                <asp:TreeNode Text="Apple" Value="Apple"></asp:TreeNode>
+                                <asp:TreeNode Text="Mango" Value="Mango"></asp:TreeNode>
+                                <asp:TreeNode Text="Grapes" Value="Grapes"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="Flowers" Value="Flowers">
+                                <asp:TreeNode Text="Rose" Value="Rose"></asp:TreeNode>
+                                <asp:TreeNode Text="Lily" Value="Lily"></asp:TreeNode>
+                                <asp:TreeNode Text="Lotus" Value="Lotus"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="Birds" Value="Birds">
+                                <asp:TreeNode Text="Sparrow" Value="Sparrow"></asp:TreeNode>
+                                <asp:TreeNode Text="Crow" Value="Crow"></asp:TreeNode>
+                                <asp:TreeNode Text="piegon" Value="piegon"></asp:TreeNode>
+                            </asp:TreeNode>
+                            <asp:TreeNode Text="Animals" Value="Animals">
+                                <asp:TreeNode Text="Lion" Value="Lion"></asp:TreeNode>
+                                <asp:TreeNode Text="Tiger" Value="Tiger"></asp:TreeNode>
+                                <asp:TreeNode Text="Monkey" Value="Monkey"></asp:TreeNode>
+                            </asp:TreeNode>
+                        </Nodes>
+                    </asp:TreeView>
+                </asp:View>
+            </asp:MultiView>
+        </div>
+    </form>
+</body>
+</html>
+    </pre>
+
+
+    <pre class="reg_form">
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm3.aspx.cs" Inherits="Netprac4.WebForm3" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="First Name:"></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Enter your name"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Last Name:"></asp:Label>
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Enter your last name"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Age:"></asp:Label>
+            <asp:TextBox ID="TextBox3" runat="server" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="Enter your age"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox3" ErrorMessage="   Age should be &gt;=18 and &lt;=50" MaximumValue="50" MinimumValue="18"></asp:RangeValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Contact No:"></asp:Label>
+            <asp:TextBox ID="TextBox4" runat="server" TextMode="Phone"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="Enter your contact no."></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox4" ErrorMessage="Enter a 10 digit number" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="Address:"></asp:Label>
+            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="Enter proper address"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label6" runat="server" Text="Email-id:"></asp:Label>
+            <asp:TextBox ID="TextBox6" runat="server" TextMode="Email"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="Enter proper email-id"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox6" ErrorMessage="Enter email-id in proper format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label7" runat="server" Text="Password:"></asp:Label>
+            <asp:TextBox ID="TextBox7" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox7" ErrorMessage="Create a password"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label8" runat="server" Text="Confirm Password:"></asp:Label>
+            <asp:TextBox ID="TextBox8" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox8" ErrorMessage="Enter the password again"></asp:RequiredFieldValidator>
+            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBox7" ControlToValidate="TextBox8" ErrorMessage="Your password doesnot match with the previous password"></asp:CompareValidator>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" Text="Submit" />
+        </div>
+    </form>
+</body>
+</html>
+    </pre>
+
+
+    </pre>
+
+    <pre class="state management">
+        <pre class="cookies">
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Netprac5.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Select Your Choice:-"></asp:Label>
+            <br />
+            
+            <br />
+            <asp:CheckBox ID="apple" runat="server" Text="Apple" />
+            <br />
+            <asp:CheckBox ID="dell" runat="server" Text="Dell" />
+            <br />
+            <asp:CheckBox ID="lenevo" runat="server" Text="Lenevo" />
+            <br />
+            <asp:CheckBox ID="acer" runat="server" Text="Acer" />
+            <br />
+            <asp:CheckBox ID="sony" runat="server" Text="Sony" />
+            <br />
+            <asp:CheckBox ID="wipro" runat="server" Text="Wipro" />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+            <br />
+            <br />
+            <asp:Label ID="Label" runat="server"></asp:Label>
+
+            <br />
+
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Netprac5
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Response.Cookies["computer"].Expires = DateTime.Now.AddDays(-1);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label.Text = "";
+            //Adding values
+            if (apple.Checked)
+                Response.Cookies["computer"]["apple"] = "Apple";
+            if (dell.Checked)
+                Response.Cookies["computer"]["dell"] = "Dell";
+            if (lenevo.Checked)
+                Response.Cookies["computer"]["lenevo"] = "Lenevo";
+            if (acer.Checked)
+                Response.Cookies["computer"]["acer"] = "Acer";
+            if (sony.Checked)
+                Response.Cookies["computer"]["sony"] = "Sony";
+            if (wipro.Checked)
+                Response.Cookies["computer"]["wipro"] = "Wipro";
+            //Fetching values
+            if (Request.Cookies["computer"].Values.ToString() != null)
+            {
+                if (Request.Cookies["computer"]["apple"] != null)
+                    Label.Text += Request.Cookies["computer"]["apple"] + " ";
+                if (Request.Cookies["computer"]["dell"] != null)
+                    Label.Text += Request.Cookies["computer"]["dell"] + " ";
+                if (Request.Cookies["computer"]["lenevo"] != null)
+                    Label.Text += Request.Cookies["computer"]["lenevo"] + " ";
+                if (Request.Cookies["computer"]["acer"] != null)
+                    Label.Text += Request.Cookies["computer"]["acer"] + " ";
+                if (Request.Cookies["computer"]["sony"] != null)
+                    Label.Text += Request.Cookies["computer"]["sony"] + " ";
+                if (Request.Cookies["computer"]["wipro"] != null)
+                    Label.Text += Request.Cookies["computer"]["wipro"] + " ";
+            }
+            else Label.Text = "Please select your choice";
+            Response.Cookies["computer"].Expires = DateTime.Now.AddDays(-1);
+
+
+        }
+    }
+}
+    </pre>
+
+    <pre class="session">
+        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Session.aspx.cs" Inherits="Netprac5.Session" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <asp:Label ID="user" runat="server" Text="Username"></asp:Label>
+            <asp:TextBox ID="Tuser" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="pass" runat="server" Text="Password"></asp:Label>
+            <asp:TextBox ID="Tpass" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="submit" runat="server" OnClick="submit_Click" Text="Submit" />
+            <br />
+            <br />
+            <asp:Label ID="Displayerror" runat="server"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Sessionname" runat="server"></asp:Label>
+            <br />
+            <br />
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Netprac5
+{
+    public partial class Session : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            if (Tpass.Text=="net123")
+            {
+                Session["Username"] = Tuser.Text;
+            }
+            else
+            {
+                Displayerror.Text = "Wrong Password";
+            }
+            //Checking whether the session variable is empty
+            if (Session["Username"]!=null)
+            {
+                Displayerror.Text = "This user is stored to the session";
+                Sessionname.Text = Session["Username"].ToString();
+            }
+        }
+    }
+}
+    </pre>
+
+    <pre class="application">
+        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Application.aspx.cs" Inherits="Netprac5.Application" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Application Management"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Total user"></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Online user"></asp:Label>
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" />
+            <br />
+            <br />
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Netprac5
+{
+    public partial class Application : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            String tusers, ousers;
+            Application.Lock();
+            tusers = Application["tusers"].ToString();
+            ousers = Application["ousers"].ToString();
+            Application.UnLock();
+            TextBox1.Text = tusers;
+            TextBox2.Text = ousers;
+
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Optimization;
+using System.Web.Routing;
+using System.Web.Security;
+using System.Web.SessionState;
+
+namespace Netprac5
+{
+    public class Global : HttpApplication
+    {
+        /*void Application_Start(object sender, EventArgs e)
+        {
+            Code that runs on application startup
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);*/
+
+
+            void Application_Start(object sender, EventArgs e)
+            {
+                Application.Lock();
+                Application["tusers"] = 0;
+                Application["ousers"] = 0;
+                Application.UnLock();
+            }
+
+            void Application_End(object sender, EventArgs e)
+            {
+                //Code that runs on application shutdown
+            }
+
+            void Application_Error(object sender, EventArgs e)
+            {
+                //Code that runs when an unhandled errors occurs
+            }
+            void Session_Start(object sender, EventArgs e)
+            {
+                int tusers, ousers;
+                Application.Lock();
+                tusers = int.Parse(Application["tusers"].ToString()) + 1;
+                ousers = int.Parse(Application["ousers"].ToString()) + 1;
+                Application["tusers"] = tusers;
+                Application["ousers"] = ousers;
+                Application.UnLock();
+            }
+
+            void Session_End(object sender, EventArgs e)
+            {
+                int ousers;
+                Application.Lock();
+                ousers = int.Parse(Application["ousers"].ToString()) - 1;
+                Application["ousers"] = ousers;
+                Application.UnLock();
+            }
+     }
+}
+
+    
+
+    </pre>
+    </pre>
+    
+</body>
+</html>
