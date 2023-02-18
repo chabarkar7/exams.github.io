@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre class="calc">
+        <!-- index.html
+<html>	
+	<head>
+		<title>CALCULATOR</title>
+	</head>
+	<body>
+		<h3>CALCULATOR</h3>
+		<form action="calculate" method="get">
+		<table><tr>
+			<td><input name="opr1" type="text"/>
+			</td>
+			<td><select name="Operation">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+				<option value="%">%</option>
+			    </select>
+			</td>
+			<td><input name="opr2" type="text"/>
+			</td>
+			<td><input name="result" type="submit"/>
+			</td>
+		       </tr>
+		</table>
+		</form>
+	</body></html> -->
+calculate.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.Servlet.ServletException;
+import javax.Servlet.http.HttpServlet;
+import javax.Servlet.http.HttpServletRequest;
+import javax.Servlet.http.HttpServletResponse;
+public class calculate extends HttpServlet 
+{
+	protected void processRequest(HttpServletRequest request,
+           HttpServletResponse response) throws ServletException,IOException
+	{
+           }
+            @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		Print Writer out=response.getWriter();
+		try
+		{
+			Integer opr1=Integer.parseInt(request.getParameter("opr1"));
+			Integer opr2=Integer.parseInt(request.getParameter("opr2"));
+			Integer result=null;
+			String operation=request.getParameter("operation");
+			if("+".equals(operation))
+			{
+				result=opr1+opr2;
+			}
+			if("-".equals(operation))
+			{
+				result=opr1-opr2;
+			}
+			if("*".equals(operation))
+			{
+				result=opr1*opr2;
+			}
+			if("/".equals(operation))
+			{
+				result=opr1/opr2;
+			}
+			if("%".equals(operation))
+			{
+				result=opr1%opr2;
+			}
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>Servlet cal</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h2>Result is:"+result+"</h2>");
+			out.println("</body>");
+			out.println("</html>");
+		}
+		finally
+		{
+			out.close();
+		}}} 
+
+    </pre>
+
+    <pre class="login">
+        <!-- index.html
+<html> 
+    <head> 
+        <title>Login form</title>
+    </head>
+    <body>
+          <center>
+          <h1>Login Form</h1>
+         <form action="Login" method="post">
+          Name:<input type="text" name="userName"/><br><br>
+          Password:<input type="password" name="userPass"/><br><br>
+         <input type="submit" value="Submit"/>
+         <input type=”reset” value=”Reset”/>
+         </form>
+         </center>
+   </body>
+</html> -->
+ 
+
+login.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class login extends HttpServlet
+{
+protected void processRequest(HttpServletRequest request,
+HttpServletResponse response) throws ServletException, IOException 
+	{
+      	}
+	@Override
+      	 public void doPost(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException 
+	{
+response.setContentType("text/html");
+ 		PrintWriter out = response.getWriter();
+                    	String n=request.getParameter("userName");
+                    	String p=request.getParameter("userPass");
+if(n.equals("Dimple")&&p.equals("dimple"))
+		{
+                 		out.println("Hello "+n);
+}
+ 		else
+		{
+out.println(“Login failed");
+  		}
+ 	}
+}
+
+    </pre>
+
+    <pre class="reg_form">
+        <!-- index.html
+<html>
+    <head>
+        <title>REGISTRATION</title>
+     </head>
+    <body>
+        <form action="Registration" method="post">
+        Full Name: <input type="text" name="username"  
+                              placeholder="Enter your     full name"><br><br>
+        Age: <input type="number" name="age" min="1" max="50"   
+                 placeholder ="year's old"><br><br>
+        Gender :<input type="radio" name="gender" value="Male" >Male 
+                 <input type="radio" name="gender" value="Female">Female</br></br>
+        Hobbies:Sports <input type="checkbox" name="hobbies" value="Sports" >
+                  Singing <input type="checkbox" name="hobbies" value="Singing">
+                  Dancing <input type="checkbox" name="hobbies" value="Dancing">
+                  Writing <input type="checkbox" name="hobbies" value="Writing"></br>
+                  Contact No: <input type="tel" name="numbers" 
+                                        placeholder="Your contact" ><br><br>
+        E-mail:<input type="email" name="email" placeholder="Your email"><br><br>
+        	        <input type="submit"  value="Submit">
+                   <input type="reset"  value="Reset">
+        </form>
+
+    </body>
+</html> -->
+
+Registration.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Registration extends HttpServlet 
+{
+    protected void processRequest(HttpServletRequest request, 
+    HttpServlet Response response) throws ServletException, IOException 
+    {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) 
+            {
+         String name=request.getParameter("username");
+                    String age=request.getParameter("age");
+                    String gender=request.getParameter("gender");
+                    String hobbies=request.getParameter("hobbies");
+                    String contact=request.getParameter("numbers");
+                    String email=request.getParameter("email");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Servlet Registration</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1> Name :" + name + "<br> Age :" + age + "
+               <br>Gender :" + gender + "<br> Hobbies :" + hobbies + "<br> Contact :”
+                    contact + "<br> E-mail :" + email + "</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }  
+            }
+}
+
+    </pre>
+
+    <pre class="eveodd">
+        <!-- index.html
+<html>
+    <head>
+        <title>even odd no</title>
+   </head>
+    <body>
+   	 <form action="evenodd" method="get">
+             Enter Number: <input type="text" name="txtno"><br><br>
+            	                <input type="submit" value ="Submit ">
+                                     <input type="reset" value="Reset">
+              </form>
+    </body>
+</html> -->
+
+
+
+evenodd.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class eveodd extends HttpServlet 
+{
+        protected void processRequest(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException 
+        {
+        }
+       @Override
+        protected void doGet(HttpServletRequest request, 
+        HttpServletResponse response) throws ServletException, IOException
+        {
+	   response.setContentType("text/html;charset=UTF-8");
+      	   PrintWriter out = response.getWriter();
+       	   try
+              {
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Servlet evenodd</title>");            
+                    out.println("</head>");
+                    out.println("<body> <center>");
+                    int no;
+                    no=Integer.parseInt(request.getParameter("txtno"));
+           	if(no % 2 == 0)
+                		out.println(no + "is even ");
+            	else 
+                 		out.println(no + "is odd ");
+                    out.println("</center> </body>");
+                    out.println("</html>");
+       }
+    }
+}
+
+    </pre>
+
+    <pre class="cube">
+        <!-- index.html
+<html>
+    <head>
+        <title>Cube</title>
+    </head>
+    <body>
+        <form action="cube" method="get">
+          Enter Number:<input type="text" value="" name="txtnm">
+            		 <input type="submit" value="Submit">
+            		 <input type="reset" value="Reset">
+        </form>
+    </body>
+</html> -->
+
+
+
+cube.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class cube extends HttpServlet
+{
+protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+{
+        		response.setContentType("text/html;charset=UTF-8");
+        		try (PrintWriter out = response.getWriter()) {
+          	           int no=Integer.parseInt(request.getParameter("txtnm"));
+           	int Result;
+           	Result=no*no*no;
+           	out.println("<!DOCTYPE html>");
+            	out.println("<html>");
+            	out.println("<head>");
+            	out.println("<title>Servlet cube</title>");            
+           	out.println("</head>");
+            	out.println("<body>");
+            	out.println("<h1>Cube of the number:" + Result + "</h1>");
+            	out.println("</body>");
+            	out.println("</html>");
+       	 }
+    }
+
+}
+
+
+    </pre>
+
+    <pre class="fact">
+
+        <!-- index.html
+<html>
+    <head>
+        <title> factorial</title>
+    </head>
+    <body>
+    	<form action="factorialno" method="get">
+             Enter number <input type="text" name="textno"><br>
+         	 		    <input type="submit" value="Submit">
+        	 		    <input type="reset" value="Reset">
+        	 </form>
+     </body>
+</html> -->
+
+
+
+factorialno.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class factorialno extends HttpServlet
+{
+ protected void processRequest (HttpServletRequest  request,   
+ HttpServletResponse response) throws ServletException, IOException 
+	{
+           }
+    	@Override
+   	 protected void doGet(HttpServletRequest request, 
+ HttpServletResponse response) throws ServletException, IOException 
+	 {
+        		response.setContentType("text/html;charset=UTF-8");
+        		try (PrintWriter out = response.getWriter()) 
+		{
+           			out.println("<!DOCTYPE html>");
+            			out.println("<html>");
+            			out.println("<head>");
+            			out.println("<title>Servlet factorialno</title>");            
+            			out.println("</head>");
+            			out.println("<body>");
+            			int num;
+            			num=Integer.parseInt(request.getParameter("textno"));
+            			out.println("num=" + num ) ;
+            			int f=fact(num);
+            			out.println("<br>n!="+f);
+            			 out.println("</body>");
+            			 out.println("</html>");
+       		 }
+   	 }
+	private int fact(int n)
+	{
+    		if(n==0)
+        		return 1;
+    		else 
+        		return n * fact(n-1);
+	}
+    
+}
+
+    </pre>
+
+    <pre class="reqdispatcher">
+        <!-- index.html
+<html>
+    <head>
+        <title>Login form</title>
+    </head>
+    <body>
+          <centre>
+          <h1>Login Form</h1>
+          <form action="Login" method="post">
+            Name:<input type="text" name="userName"/><br><br>
+            Password:<input type="password" name="userPass"/><br><br>
+           <input type="submit" value="Login"/>
+            </form>
+           </center>
+    </body>
+</html> -->
+
+
+
+
+
+
+
+
+
+Login.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
+public class Login extends HttpServlet
+{
+    protected void processRequest(HttpServletRequest request, 
+    HttpServlet Response response) throws ServletException, IOException 
+    {
+     }
+    @Override
+     public void doPost(HttpServletRequest request, 
+     HttpServletResponse    response) throws ServletException, IOException 
+     {
+         response.setContentType("text/html");
+         PrintWriter out = response.getWriter();
+         String n=request.getParameter("userName");
+         String p=request.getParameter("userPass");
+         if(p.equals("Servlet"))
+         {
+              RequestDispatcher rd=request.getRequestDispatcher("WelcomeServlet");
+ 	   rd.forward(request, response);
+         }
+         else
+         {
+     	   out.println("<center>");
+ 	   out.print("<h2>Error in Login!</h2>");
+  	   out.println("<br>");
+   	   out.println("<br>");
+ 	   RequestDispatcher rd=request.getRequestDispatcher("/index.html");
+              rd.include(request, response);
+
+        }
+    }
+}
+Welcome Servlet.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet(urlPatterns = {"/WelcomeServlet"})
+public class WelcomeServlet extends HttpServlet
+ {
+@Override
+   	protected void doPost(HttpServletRequest request, 
+           HttpServletResponse response) throws ServletException, IOException
+ {
+        		response.setContentType("text/html"); 
+ PrintWriter out = response.getWriter();
+String n=request.getParameter("userName");
+out.print("Hello "+n);
+ }
+}
+
+    </pre>
+
+    <pre class="cookie">
+
+        <!-- index.html
+<html>
+<head>
+<title>Cookie Demo</title>
+</head>
+<body>
+<form action="Page1" >
+ 		Enter Your Name <input type="text" name="txtName"><br>
+<input type="submit" value=" Click to Enter ">
+</form>
+</body>
+</html> -->
+
+
+
+Page1.java
+package mypack;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+
+public class Page1 extends HttpServlet 
+{
+public void doGet(HttpServletRequest request,
+ HttpServletResponse response)throws ServletException, IOException 
+{
+               response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+               out.println("<html><head><title>Page1</title></head>");
+ 	    out.println("<body bgcolor=pink >");
+    String uname = request.getParameter("txtName");
+ 	    out.println("<h1>~~~ Welcome "+uname+"</h1>");
+ 	    Cookie ck1 = new Cookie("username", uname);
+ 	    Cookie ck2 = new Cookie("visit","1");
+ 	    response.addCookie(ck1); response.addCookie(ck2);
+               out.println("<h1><a href=Page2 >Click to visit Page 2 </a></h1>");
+               out.println("</body>");
+               out.println("</html>");
+ }
+ }
+
+Page2.java
+package mypack;
+import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+
+public class Page2 extends HttpServlet 
+{
+public void doGet(HttpServletRequest request, 
+HttpServletResponse response) throws ServletException, IOException 
+{
+     response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<html><head><title>Page2</title></head>");
+                out.println("<body bgcolor=yellow >");
+                Cookie [] ck = request.getCookies();
+                for(int i=0;i<ck.length;i++){
+ 	     if(ck[i].getName().equals("visit")){
+     int count = Integer.parseInt(ck[i].getValue())+1;
+ 	     out.println("<h1>Visit No : "+count+"</h1>");
+ 	     ck[i] = new Cookie("visit",count+"");
+                response.addCookie(ck[i]);
+           }
+else 
+{
+ 		out.println(ck[i].getName()+ " = "+ck[i].getValue()); }
+ 		out.println("<h1><a href=Page3 >Click to visit Page 3 </a></h1>");
+ 		out.println("<h1><a href=Page4 >Click to visit Page 4 </a></h1>");
+ 		out.println("<h1><a href=Page5 >Click to visit Page 5 </a></h1>");
+out.println("</body>");
+ 		out.println("</html>");
+ }
+ }
+
+    </pre>
+
+    <pre class="session">
+
+        <!-- index.html
+<html> 
+<head>
+<title>Session Demo</title>
+</head>
+<body>
+<form action="Page1" method="get" >
+ Enter User ID <input type="text" name="txtName"><br>
+<input type="reset" ><input type="submit" >
+</form>
+</body>
+</html> -->
+
+
+Page1.java
+package mypack1;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+public class Page1 extends HttpServlet 
+{
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException 
+    {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<html><head><title>Servlet Page1</title></head>");
+        HttpSession hs = request.getSession(true);
+        if(hs.isNew())
+        {
+            out.println("<body bgcolor=yellow>");
+            String name = request.getParameter("txtName");
+            hs.setAttribute("uname", name);
+            hs.setAttribute("visit", "1");
+            out.println("<h1>Welcome First Time</h1>");
+        }
+        else
+        {
+            out.println("<h1>Welcome Again</h1>");
+            int visit = Integer.parseInt((String)hs.getAttribute("visit"))+1;
+            out.println("<h1>You Visited "+visit+"Times</h1>");
+            hs.setAttribute("visit", ""+visit);
+        }
+        out.println("<h1>Your Session ID "+hs.getId()+"</h1>");
+        out.println("<h1>You Logged in at "+
+                            new java.util.Date(hs.getCreationTime())+"</h1>");
+        out.println("<h1><a href=Page2>Click for Page 2 </a></h1>");
+        out.println("<h1><a href=Page3>Click for Page 3 </a></h1>");
+        out.println("<h1><a href=Page4>Click for Page 4 </a></h1>");
+        out.println("<h1><a href=LogoutServlet>
+                            Click to Terminate Session </a></h1>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+}
+
+
+Page2.java
+package mypack1;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Page2 extends HttpServlet 
+{
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException 
+    {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<html><head><title>Servlet Page2</title></head>");
+        HttpSession hs = request.getSession(false);
+        out.println("<h1>Welcome Again on Page No. 2</h1>");
+        int visit = Integer.parseInt((String)hs.getAttribute("visit"))+1;
+        out.println("<h1>You Visited "+visit+"Times</h1>");
+        hs.setAttribute("visit", ""+visit);
+        out.println("<h1>Your Session ID "+hs.getId()+"</h1>");
+        out.println("<h1>You Logged in at "+
+                          new java.util.Date(hs.getCreationTime())+"</h1>");
+        out.println("<h1><a href=Page1>Click for Page 1 </a></h1>");
+        out.println("<h1><a href=Page3>Click for Page 3 </a></h1>");
+        out.println("<h1><a href=Page4>Click for Page 4 </a></h1>");
+        out.println("<h1><a href=LogoutServlet>
+                               Click for Terminate Session </a></h1>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+ }
+
+    </pre>
+
+    <pre class="jspimpobj">
+        <!-- index.html
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<html>
+<head>
+<title>JSP Page</title>
+</head> 
+<body>
+ 	       <h1>Use of Intrinsic Objects in JSP</h1> 
+                  <h1>Request Object </h1>         
+                   Query String <%=request.getQueryString() %><br>         
+                   Context Path <%=request.getContextPath() %><br>         
+                   Remote Host  <%=request.getRemoteHost()  %><br> 
+                  <h1>Response Object </h1>        
+ 	        Character Encoding Type<%=response.getCharacterEncoding()%><br>          
+                   Content Type <%=response.getContentType()  %><br>        
+                   Locale  <%=response.getLocale()  %><br>
+                  <h1>Session Object </h1>        
+                  ID <%=session.getId() %><br>        
+               Creation Time <%=new java.util.Date(session.getCreationTime()) %><br>        
+             Last Access Time<%=newjava.util.Date
+                                                (session.getLastAccessedTime())  %><br> 
+</body> 
+</html>  -->
+
+    </pre>
+
+    <pre class="jspregform">
+
+        <!-- Registration.jsp -->
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSP Page</title>
+</head>
+<body>
+<center>
+<h1> Register Form</h1>
+<form action="register" method="post">
+<table style="with:50%">
+<center>
+<table border="2">
+<tr><td><b>User Name:</b></td>
+<td><input type="text" name="uname"></td>
+</tr>
+<tr>
+<td><b>Email-ID:</b></td>
+<td><input type="email" name="uemail"></td>
+</tr>
+<tr>
+<td><b>Create Password:</b></td>
+<td><input type="password" name="upass"></td>
+</tr>
+<tr>
+<td><b>Confirm Password:</b></td>
+<td><input type="password" name="upass"></td>
+</tr>
+<tr>
+<td><b>D.O.B</b></td>
+<td><input type="text" name="udob"></td>
+</tr>
+<tr>
+<td><b>Gender:</b></td>
+<td><input type="radio" name="ugender" value="Male">Male<br>
+<input type="radio" name="ugender" value="Female">Female</td>
+</tr>
+<tr>
+<td><b>Phone No:</b></td>
+<td><input type="text" name="uphone"></td>
+</tr>
+<tr>
+<td><b>Country:</b></td>
+<td><input type="text" name="uloc"></td>
+</tr>
+<tr rowspan="2">
+<td><input type="submit" value="SignUp">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="reset" value="Reset"></td>
+</tr>
+</table></form></center>
+</body>
+</html> -->
+
+    </pre>
+
+    <pre class="ejbhello">
+        <!-- index.html
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <form action="ejbhello" method="get">
+        <input type="text" value="" name="name">
+        <input type="submit" value="Submit">
+        </form>
+    </body>
+</html> -->
+
+ejbhello.java
+package ejb;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ejb.EJB;
+import javax.servlet.annotation.WebServlet;
+@WebServlet(name="ejbhello", urlPatterns={"/welcomeServlet"})
+public class ejbhello extends HttpServlet 
+{
+      protected void processRequest(HttpServletRequest request,   
+      HttpServletResponse response) throws ServletException, IOException 
+      {
+       }
+    @Override
+    protected void doGet(HttpServletRequest request, 
+    HttpServletResponse response)throws ServletException, IOException 
+    {
+         response.setContentType("text/html;charset=UTF-8");
+         try (PrintWriter out = response.getWriter()) {
+            WelcomeBean test=new WelcomeBean();
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Welcome EJB</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println(test.Welcome(request.getParameter("name")));
+            out.println("</br>Click<a href='index.html'> here </a> to go back");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+}
+
+welcomeBean.java
+package ejb;
+import javax.ejb.Stateless;
+@Stateless
+public class WelcomeBean 
+{
+public String Welcome(String user)
+{
+    		return "Hello"+" " +user.toUpperCase()+" "+
+"Welcome to the world of EJB";
+}
+ } 
+
+    </pre>
+
+    <pre class="ejbcurrency">
+        <!-- index.html
+<html>
+<head>	
+<title>Currency Converter</title>
+</head>
+           <body>
+        	<form action="CCServlet" >
+            Enter Amount <input type="text" name="amt"><br>
+            Select Conversion Type
+            <input type="radio" name="type" value="r2d" checked>Rupees to Dollar
+            <input type="radio" name="type" value="d2r" >Dollor to Rupees<br>
+            <input type="reset" ><input type="submit" value="CONVERT" >
+        </form>
+    </body>
+</html> -->
+
+
+
+CCServlet.java
+package mypack;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.ejb.EJB;
+import mybeans.CCBean;
+public class CCServlet extends HttpServlet 
+{
+    @EJB CCBean obj;
+     public void doGet(HttpServletRequest request, 
+     HttpServletResponse response) throws ServletException, IOException
+     {
+         response.setContentType("text/html;charset=UTF-8");
+         PrintWriter out = response.getWriter();
+         double amt = Double.parseDouble(request.getParameter("amt"));
+         if(request.getParameter("type").equals("r2d"))
+         {
+             out.println("<h1>"+amt+ " Rupees = "+obj.r2Dollor(amt)+" Dollors</h1>");
+          }
+          if(request.getParameter("type").equals("d2r"))
+{
+  out.println("<h1>"+amt+ " Dollors = "+obj.d2Rupees(amt)+" Rupees</h1>");
+}
+     }
+}
+
+
+
+
+CCBean.ejb
+package mybeans;
+import javax.ejb.Stateless;
+@Stateless
+public class CCBean 
+{
+public CCBean(){}
+public double r2Dollor(double r){   return r/65.65;  }
+public double d2Rupees(double d){   return d*65.65;  }
+}
+
+    </pre>
+
+
+</body>
+</html>
